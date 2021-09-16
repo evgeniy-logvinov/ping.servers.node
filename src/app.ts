@@ -39,5 +39,27 @@ setInterval(() => {
       });
 }, 2000);
 
+if (process.env.BASE_URL_SECOND) {
+  const instanceSecond = axios.create({
+    baseURL: process.env.BASE_URL_SECOND,
+  });
+
+  setInterval(() => {
+    instanceSecond.get('/')
+        .then(function(response) {
+          // handle success
+          console.log(response.data);
+        })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function() {
+          // always executed
+        });
+  }, 2000);
+
+}
+
 console.log('Done');
 export default app;
