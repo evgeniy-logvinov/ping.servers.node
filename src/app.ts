@@ -14,10 +14,30 @@
  * limitations under the License.
  */
 import express from 'express';
+import axios from 'axios';
 
 const app = express();
 
 app.get('/', (_, res) => res.send('Hello World!'));
+
+const instance = axios.create({
+  baseURL: process.env.BASE_URL,
+});
+
+setTimeout(() => {
+  instance.get('/')
+      .then(function(response) {
+      // handle success
+        console.log(response);
+      })
+      .catch(function(error) {
+      // handle error
+        console.log(error);
+      })
+      .then(function() {
+      // always executed
+      });
+}, 2000);
 
 console.log('Done');
 export default app;
