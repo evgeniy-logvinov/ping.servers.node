@@ -24,11 +24,11 @@ const instance = axios.create({
   baseURL: process.env.BASE_URL,
 });
 
-setTimeout(() => {
+setInterval(() => {
   instance.get('/')
       .then(function(response) {
       // handle success
-        console.log(response);
+        console.log(response.data);
       })
       .catch(function(error) {
       // handle error
