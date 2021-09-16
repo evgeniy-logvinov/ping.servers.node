@@ -17,6 +17,7 @@ import express from 'express';
 import axios from 'axios';
 
 const app = express();
+const intervalTime = Number(process.env.INTERVAL_TIME) || 5000;
 
 app.get('/', (_, res) => res.send('Hello World!'));
 
@@ -37,7 +38,7 @@ setInterval(() => {
       .then(function() {
       // always executed
       });
-}, 2000);
+}, intervalTime);
 
 if (process.env.BASE_URL_SECOND) {
   const instanceSecond = axios.create({
@@ -57,7 +58,7 @@ if (process.env.BASE_URL_SECOND) {
         .then(function() {
           // always executed
         });
-  }, 2000);
+  }, intervalTime);
 
 }
 
